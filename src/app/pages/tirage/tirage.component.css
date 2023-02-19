@@ -7,7 +7,7 @@ button{
     border: none;
     color: white;
     padding: 23px 64px;
-    margin-top: 100px;
+    margin-top: 60px;
     margin-left: 40%;
     font-weight: bold;
     border-radius: 40px;
@@ -22,6 +22,6 @@ button:hover {
     background-color: white;
     border: solid 1px #CE0033;
     padding: 165px 268px;
-    margin: 80px 20% 80px 20%;
+    margin: 60px 20% 60px 20%;
     text-align: center;
 }
