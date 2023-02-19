@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+.headerNav{
+       background-color: #CE0033;
+       color: white;
+       padding: 23px 0;
+
+       display: flex;
+       justify-content: flex-end;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    padding: 0 20px;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+/* style de la page active */
+.active{
+    font-weight: bold;
+}

@@ -1,0 +1,83 @@
+<div class="pageAbsent">
+ 
+   <!--CREATION LISTE DEROULANTE POUR SELECTION PRINCIPALE DES ABSENT.E.S  -->
+
+    <form [formGroup]="absentForm">
+        <!-- Mise en forme formulaire -->
+
+        <h1>Ajouter un.e absent.e</h1>
+
+        <select class="listeDeroulante" formControlName="student">
+            <!-- Création liste déroulante pour sélectionner un étudiant absent à ajouter, avec la liaison vers la propriété student de l'objet absentForm -->
+
+
+            <option disabled selected [ngValue]="null">Selectionner absent</option>
+            <!-- Valeur par défaut / null: "Selectionner absent" -->
+
+            <option *ngFor="let person of student" [ngValue]="person">
+
+                <!-- boucle ngFor pour afficher tous les étudiants du mock "Classmates", avec la valeur liée à l'objet person -->
+
+                {{person.firstname}}
+                <!-- prénom des étudiants listés via la boucle -->
+
+            </option>
+        </select>
+
+        <br>
+
+        <button class="buttonAdd" type="submit" (click)="addElement()">Ajouter</button>
+        <!-- Ajout de l'étudiant absent sélectionné  -> méthode addElement() du service s'applique -->
+    
+    </form>
+
+
+    <div class="touteLaPromo">
+
+
+<!-- SELECTION DES ABSENTS (male)-->
+
+        <div class="absents">
+            <h2>Liste des absents</h2>
+
+            <ul>
+
+                <li *ngFor="let person of absentStudent; let index=index"
+                    [ngClass]="{'classement' : person.gender === 'female'}">
+                    <!-- boucle *ngFor pour afficher étudiant masculin dans la liste des absents, classe classement en "display : none" pour éviter doublon affichage dans "absentEs"  -->
+
+                    {{person.firstname}}
+                    
+
+                    <span class="removeButton" (click)="removeElement(index)"> X </span> 
+                    <!-- Suppression de l'étudiant de la liste -> méthode removeElement() du service s'applique -->
+
+                </li>
+            </ul>
+        </div>
+
+        
+<!-- SELECTION DES ABSENTES (female)-->
+
+        <div class="absentes">
+            <h2>Liste des absentes</h2>
+
+            <ul>
+
+                <li *ngFor="let person of absentStudent; let index=index"
+                    [ngClass]="{'classement' : person.gender === 'male'}">
+                    <!-- boucle *ngFor pour afficher étudiant féminin dans la liste des absentEs, classe classement en "display : none" pour éviter doublon affichage dans "absents"  -->
+
+                    {{person.firstname}}
+                    
+
+                    <span class="removeButton" (click)="removeElement(index)"> X </span> 
+                    <!-- Suppression de l'étudiant de la liste -> méthode removeElement() du service s'applique -->
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+<!-- Mise en forme header -->
+
+<header>
+
+<!-- Création navigation + mise en place style des pages actives avec routerLinkActive="active" pour chaque page-->
+<ul class="headerNav" type="none">
+
+    <!-- page "tirage au sort" est notre page principale, on ajoute [routerLinkActiveOptions]={exact:true} pour que le lien en navitation ne reste pas en gras quand on passe sur la page "absent.e.s" -->
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Tirage au sort</a></li>
+    <li><a routerLink="absents" routerLinkActive="active">Absent.e.s</a></li>
+
+</ul>
+
+</header>

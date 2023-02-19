@@ -1,0 +1,43 @@
+.classement{
+    display: none;
+}
+
+.listeDeroulante{
+    padding: 20px 200px 20px 30px;
+    font-size: 18px;
+}
+
+
+.removeButton{
+    background-color:  grey ;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.buttonAdd{
+    background-color: #CE0033;
+    color: white;
+    padding: 16px 41px;
+    margin: 30px 0;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+}
+
+.buttonAdd:hover, .removeButton:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.pageAbsent{
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+
+.touteLaPromo{
+    display: flex;
+    flex-direction: column;
+}

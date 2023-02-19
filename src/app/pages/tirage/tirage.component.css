@@ -1,0 +1,27 @@
+body{
+    background-color: #F0F0F0;
+}
+
+button{
+    background-color: #CE0033;
+    border: none;
+    color: white;
+    padding: 23px 64px;
+    margin-top: 100px;
+    margin-left: 40%;
+    font-weight: bold;
+    border-radius: 40px;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.selectionArea{
+    background-color: white;
+    border: solid 1px #CE0033;
+    padding: 165px 268px;
+    margin: 80px 20% 80px 20%;
+    text-align: center;
+}
