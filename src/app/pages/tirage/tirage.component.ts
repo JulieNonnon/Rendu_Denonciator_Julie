@@ -26,16 +26,27 @@ export class TirageComponent implements OnInit {
   // 2) faire apparaitre le résultat dans le HTML -> document.getElementById("result").innerHTML : ne marche pas
   // 3) si résultat apparait bien dans la zone définie, utiliser les méthodes du services pour ne pas prendre en considération les étudiants absents : non aboutie
 
-  selectedStudent: any;
+  selectedStudent: Students | null = null; // mieux que any
 
   public randomSelect() {
 
-    const index = Math.floor(Math.random() * this.student.length);
-    this.selectedStudent = this.student[index];
-    console.log(this.selectedStudent);
-    // this.selectedStudent = document.getElementById("result").innerHTML;
+    const presentStudents = this.student.filter(s => 
+      !this.studentService.estAbsent(s) 
+    );
+  
+    if (presentStudents.length === 0) {
+      this.selectedStudent = null;
+      alert("Aucun étudiant présent !");
+      return;
+    }
 
+    const index = Math.floor(Math.random() * presentStudents.length);
+    this.selectedStudent = presentStudents[index];
+    console.log("Etudiant sélectionné : ", this.selectedStudent);
   }
 
-
+  // garde l'étudiant s seulement s’il n’est pas absent.
+  // this.student est la liste complète des étudiants (présents et absents) 
+  // s représente chaque étudiant de this.student
+  // .filter(...) sert à garder uniquement ceux pour lesquels la fonction retourne true. 
 }

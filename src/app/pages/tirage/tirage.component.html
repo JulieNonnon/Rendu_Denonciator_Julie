@@ -6,19 +6,11 @@
 
 <!-- zone de résultat -->
 <div class="selectionArea" >
-
-    <p>Personne n'a été sélectionné actuellement 👀</p>
-
-
-    <p id="result" *ngFor="let person of student" ngIf="selectedStudent"> 
-        <!-- utilisation d'un ng-bind pour faire apparaitre console.log en html ? -->
-        
-        <!-- le prenom et le message genré doivent apparaitre en html quand on clique sur le bouton  -->
-        {{person.firstname}}
-        {{person.genderMessage}}
-
-    
+    <p *ngIf="!selectedStudent">
+        Personne n'a été sélectionné actuellement 👀
     </p>
 
-
+    <p id="result"  *ngIf="selectedStudent"> 
+        {{ selectedStudent.firstname }} {{ selectedStudent.genderMessage }}
+    </p>
 </div>

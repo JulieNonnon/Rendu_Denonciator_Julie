@@ -13,17 +13,17 @@ export class ListeAbsentsService {
   // 1) GETSTUDENT: 
   //Récupéreration de la liste des étudiants absents enregistrée en local
   
-  public getStudent() {
+  public getStudent(): Students[] { // typer le retour pour plus de claireté
 
-    const student = localStorage.getItem("student");
+    const stored = localStorage.getItem("student");
 
-    if(student) {
+    if(stored) {
       // changer le type string en type objet avec JSON.parse
-      return JSON.parse(student);
+      return JSON.parse(stored);
     } else {
       // création nouvelle liste si aucune n'existe
       this.createStudent(); 
-      this.getStudent(); 
+      return this.getStudent(); // penser au return sinon risque d'un undefined
     }
 
   }
@@ -42,7 +42,7 @@ export class ListeAbsentsService {
   // 3) SAVESTUDENT:
   // Sauvegarde liste d'étudiants absents en local
 
-  private saveStudent(student: Students) {
+  private saveStudent(student: Students[]) {
 
     localStorage.setItem('student', JSON.stringify(student));
     
@@ -54,33 +54,37 @@ export class ListeAbsentsService {
   public addStudent(absentStudent: Students){
 
      // Récupérer liste étudiants absents
-    const student= this.getStudent() 
+    const students= this.getStudent() 
     // Vérification si étudiant dans liste absents
-    const existingStudent= student.find((student: Students) => student.id==absentStudent.id);
+    const existingStudent= students.find((student: Students) => student.id==absentStudent.id);
     if (existingStudent) {
       // Si étudiant est déjà dans la liste absents, message dans localStorage
       console.log("Etudiant déjà renseigné absent"); 
     }
     else {
     // Si étudiant absent, ajout à la liste absents  
-      student.push(absentStudent) 
+      students.push(absentStudent) 
     }
     // màj de la nouvelle liste
-    this.saveStudent(student) 
+    this.saveStudent(students) 
   }
 
   // 5) REMOVEELEMENT:
   // Sauvegarde de la nouvelle liste
 
-  public removeElement(idStudent: number){
+  public removeElement(index: number){
 
     // Récupérer la liste des étudiants absents
-    const student= this.getStudent()
+    const students= this.getStudent()
     // Slice pour retirer l'étudiant de la liste (selon son indice)
-    student.splice(idStudent, 1) 
+    students.splice(index, 1) 
     // Màj de la nouvelle liste
-    this.saveStudent(student);  
+    this.saveStudent(students);  
   }
 
-
+  // 6) Booleen si l'étudiant est absent
+  public estAbsent(student: Students): boolean {
+    const absents = this.getStudent(); // absents est un tableau de type Students[], a représente un étudiant dans la liste des absents.
+    return absents?.some((a: Students) => a.id === student.id); // some(...) parcourt chaque étudiant a du tableau absents, et on vérifie si l’un des absents a le même id que celui qu’on teste. Si au moins un match existe, .some() retourne true, donc l'étudiant est absent.
+  }
 }
