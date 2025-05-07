@@ -42,3 +42,15 @@
     display: flex;
     flex-direction: column;
 }
+
+@media (max-width: 490px) {
+
+    .pageAbsent{
+        flex-direction: column;
+        margin: 0 10%;
+    }
+
+    .listeDeroulante{
+        padding: 20px 40% 20px 30px;
+    }
+}
